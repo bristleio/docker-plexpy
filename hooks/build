@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PLEXPY_VERSION=$(curl -s https://raw.githubusercontent.com/JonnyWong16/plexpy/v2/plexpy/version.py | grep VERSION | sed -e 's/\"//g' | cut -d " " -f 3)
 
 docker build \
