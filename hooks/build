@@ -1,0 +1,11 @@
+PLEXPY_VERSION=$(curl -s https://raw.githubusercontent.com/JonnyWong16/plexpy/v2/plexpy/version.py | grep VERSION | sed -e 's/\"//g' | cut -d " " -f 3)
+
+docker build \
+--no-cache \
+--rm \
+--tag loganavatar/plexpy-v2-armhf:latest \
+--tag "loganavatar/plexpy-v2-armhf:$PLEXPY_VERSION" \
+--build-arg BUILD_DATE=$(date --utc +"%B-%d-%Y-%H:%M:%S-UTC") \
+--build-arg VERSION=$PLEXPY_VERSION \
+--build-arg GIT_BRANCH='v2' \
+docker-plexpy-armhf/
