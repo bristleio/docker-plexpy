@@ -1,4 +1,4 @@
-FROM lsiobase/alpine.python.armhf:3.6
+FROM resin/raspberrypi3-alpine-python:3.6-slim
 MAINTAINER sparklyballs
 
 # set version label
@@ -13,6 +13,7 @@ RUN \
 	g++ \
 	gcc \
 	make \
+        git \
 	python-dev && \
 
 # install pycryptodomex
