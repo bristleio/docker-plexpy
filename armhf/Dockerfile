@@ -40,7 +40,7 @@ RUN \
 	/root/.cache
 
 # add local files
-COPY root/ /
+COPY ../root/ /
 
 # ports and volumes
 VOLUME /config /logs
