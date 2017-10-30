@@ -20,7 +20,9 @@ RUN \
  pip install --no-cache-dir -U \
 	pycryptodomex && \
 
+# check to see if branch exists
  remotecheck=$(git ls-remote --heads https://github.com/JonnyWong16/plexpy $GIT_BRANCH | wc -l) && \
+ 
 # install app
  if [ $remotecheck = 0 ]; then \
     echo "Bad branch name, $GIT_BRANCH, cloning master instead." && \
