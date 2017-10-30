@@ -1,40 +1,36 @@
-[linuxserverurl]: https://linuxserver.io
-[forumurl]: https://forum.linuxserver.io
-[ircurl]: https://www.linuxserver.io/irc/
-[podcasturl]: https://www.linuxserver.io/podcast/
+[bristleurl]: https://bristle.io
+[githuburl]: https://github.com/bristleio/plexpy
+[app]: plexpy
 [appurl]: https://github.com/JonnyWong16/plexpy/
-[hub]: https://hub.docker.com/r/lsioarmhf/plexpy/
+[hub]: https://hub.docker.com/r/bristleio/plexpy/
+[lsiorepo]: https://github.com/linuxserver/docker-plexpy-armhf
 
-[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
+# [bristle.io][bristleurl]
 
-The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:
-* [forum.linuxserver.io][forumurl]
-* [IRC][ircurl] on freenode at `#linuxserver.io`
-* [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
+The [bristle.io][bristleurl] team has created a fork of [LinuxServer.io][lsiorepo]'s container release of [Plexpy][appurl]
 
-# lsioarmhf/plexpy
-[![](https://images.microbadger.com/badges/version/lsioarmhf/plexpy.svg)](https://microbadger.com/images/lsioarmhf/plexpy "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/lsioarmhf/plexpy.svg)](https://microbadger.com/images/lsioarmhf/plexpy "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/lsioarmhf/plexpy.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/lsioarmhf/plexpy.svg)][hub][![Build Status](https://ci.linuxserver.io/buildStatus/icon?job=Docker-Builders/armhf/armhf-plexpy)](https://ci.linuxserver.io/job/Docker-Builders/job/armhf/job/armhf-plexpy/)
+# bristleio/plexpy
+[![Version](https://img.shields.io/github/tag/bristleio/docker-plexpy-armhf.svg)][githuburl][![Docker Pulls](https://img.shields.io/docker/pulls/bristleio/plexpy.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/bristleio/plexpy.svg)][hub][![Build Automated](https://img.shields.io/docker/automated/bristleio/plexpy.svg)][hub][![Build Status](https://img.shields.io/docker/automated/bristleio/plexpy.svg)][hub]
 
 [Plexpy][appurl] Is a Python-based Plex Usage tracker, that is currently in active development.
 
-[![plexpy](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/plexpy-banner.png)][appurl]
 
 ## Usage
 
 ```
-docker create \ 
+docker create \
   --name=plexpy \
   -v <path to data>:/config \
   -v <path to plexlogs>:/logs:ro \
   -e PGID=<gid> -e PUID=<uid>  \
   -e TZ=<timezone> \
   -p 8181:8181 \
-  lsioarmhf/plexpy
+  bristleio/plexpy
 ```
 
 ## Parameters
 
-`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
+`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side.
 For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container.
 So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
 http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
@@ -69,18 +65,15 @@ Access the webui at `<your-ip>:8181`, for more information check out [Plexpy][ap
 
 * To monitor the logs of the container in realtime `docker logs -f plexpy`.
 
-* container version number 
+* container version number
 
 `docker inspect -f '{{ index .Config.Labels "build_version" }}' plexpy`
 
 * image version number
 
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' lsioarmhf/plexpy`
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' bristleio/plexpy`
 
 
 ## Versions
-+ **21.07.17:** Internal git pull instead of at runtime.
-+ **29.05.17:** Rebase to alpine 3.6.
-+ **20.04.17:** Add pycryptodomex pip package.
-+ **07.02.17:** Rebase to alpine 3.5.
-+ **27.10.16:** Initial Release.
+
+Versions are tagged and released whenever there is an update of the [Application Branch][appurl] that we watch. Please reach out to us if you see isssues.

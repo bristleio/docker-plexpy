@@ -1,12 +1,12 @@
 FROM resin/raspberrypi3-alpine-python:3.6-slim
-MAINTAINER sparklyballs
+MAINTAINER loganavatar
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 ARG GIT_URL='https://github.com/JonnyWong16/plexpy'
 ARG GIT_BRANCH=master
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL build_version="bristle.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # install packages
 RUN \
