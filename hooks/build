@@ -3,8 +3,8 @@ PLEXPY_VERSION=$(curl -s https://raw.githubusercontent.com/JonnyWong16/plexpy/v2
 docker build \
 --no-cache \
 --rm \
---tag loganavatar/plexpy-v2-armhf:latest \
---tag "loganavatar/plexpy-v2-armhf:$PLEXPY_VERSION" \
+--tag bristleio/plexpy:armhf-latest-v2 \
+--tag "bristleio/plexpy:armhf-$PLEXPY_VERSION-v2" \
 --build-arg BUILD_DATE=$(date --utc +"%B-%d-%Y-%H:%M:%S-UTC") \
 --build-arg VERSION=$PLEXPY_VERSION \
 --build-arg GIT_BRANCH='v2' \

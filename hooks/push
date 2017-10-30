@@ -1,2 +1,2 @@
 #!/bin/bash
-docker push loganavatar/plexpy-v2-armhf
+docker push bristleio/plexpy
