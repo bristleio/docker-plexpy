@@ -37,7 +37,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 
 
 * `-p 8181` - Port for webui
-* `-v /config` Containes plexpy config and database
+* `-v /config` Contains plexpy config and database
 * `-v /logs` Map this to PLex Media servers log directory - bonus points for mapping RO
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
@@ -76,4 +76,4 @@ Access the webui at `<your-ip>:8181`, for more information check out [Plexpy][ap
 
 ## Versions
 
-Versions are tagged and released whenever there is an update of the [Application Branch][appurl] that we watch. Please reach out to us if you see isssues.
+Versions are tagged and released whenever there is an update of the [Application Branch][appurl] that we watch. Please reach out to us if you see issues.
