@@ -5,4 +5,4 @@ docker build \
 --tag bristleio/plexpy:build \
 --build-arg BUILD_DATE=$(date --utc +"%B-%d-%Y-%H:%M:%S-UTC") \
 --build-arg VERSION=$PLEXPY_VERSION \
-../../Dockerfile
+.
