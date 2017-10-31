@@ -1,31 +1,34 @@
 #!/bin/bash
-PLEXPY_VERSION=$(curl -s https://raw.githubusercontent.com/JonnyWong16/plexpy/v2/plexpy/version.py | grep VERSION | sed -e 's/\"//g' | cut -d " " -f 3)
-REPO=bristleio/plexpy
-IMG_BUILD="$REPO:build"
+PLEXPY_VERSION=$(curl -s https://raw.githubusercontent.com/JonnyWong16/plexpy/v2/plexpy/version.py | grep RELEASE_VERSION | sed -e 's/\"//g' | cut -d " " -f 3)
+REPO="bristleio/plexpy"
+IMG_BUILD=$REPO":build"
 if [ -z "$CACHE_TAG" ]
 then
   echo "Executing Branch Push"
   if [ $SOURCE_BRANCH = "build" ]
   then
     echo "Branch: $SOURCE_BRANCH indicates QA build.  Pushing QA to repo"
-      echo "Executing Tag Push"
-      IMG_LATEST="$REPO:armhf-qa-latest-v2"
-      IMG_VERSION="$REPO:armhf-qa-$PLEXPY_VERSION-v2"
-      docker tag $IMG_BUILD $IMG_LATEST
-      docker tag $IMG_BUILD $IMG_VERSION
-      echo "Tag indicates Production build. Pushing latest and version to repo"
-      docker push $IMG_LATEST
-      docker push $IMG_VERSION
+    IMG_LATEST=$REPO":armhf-qa-latest-v2"
+    IMG_VERSION=$REPO":armhf-qa-"$PLEXPY_VERSION"-v2"
+    echo "tagging $IMG_LATEST"
+    docker tag $IMG_BUILD $IMG_LATEST
+    echo "Tagging $IMG_VERSION"
+    docker tag $IMG_BUILD $IMG_VERSION
+    echo "Executing Branch Push"
+    docker push $IMG_LATEST
+    docker push $IMG_VERSION
   else
     echo "Branch: $SOURCE_BRANCH not supported"
   fi
 else
-  echo "Executing Tag Push"
-  IMG_LATEST="$REPO:armhf-latest-v2"
-  IMG_VERSION="$REPO:armhf-$PLEXPY_VERSION-v2"
-  docker tag $IMG_BUILD $IMG_LATEST
-  docker tag $IMG_BUILD $IMG_VERSION
   echo "Tag indicates Production build. Pushing latest and version to repo"
+  IMG_LATEST=$REPO":armhf-latest-v2"
+  IMG_VERSION=$REPO":armhf-"$PLEXPY_VERSION"-v2"
+  echo "tagging $IMG_LATEST"
+  docker tag $IMG_BUILD $IMG_LATEST
+  echo "Tagging $IMG_VERSION"
+  docker tag $IMG_BUILD $IMG_VERSION
+  echo "Executing Tag Push"
   docker push $IMG_LATEST
   docker push $IMG_VERSION
 fi
